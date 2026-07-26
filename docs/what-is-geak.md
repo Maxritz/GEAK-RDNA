@@ -1,14 +1,14 @@
 ---
 myst:
   html_meta:
-    "description": "GEAK is a multi-agent GPU performance optimizer for AMD Instinct MI GPUs. It raises sglang or vLLM serving throughput and optimizes single kernels (Triton, HIP, CK, FlyDSL), driven by deterministic JS Workflows."
-    "keywords": "GEAK, GPU kernel optimization, serving throughput, ROCm, sglang, vLLM, Triton, HIP, CK, FlyDSL, AMD Instinct, multi-agent, Workflow"
+    "description": "GEAK is a multi-agent GPU performance optimizer for AMD GPUs (Instinct MI series and Radeon RX 9000 series). It raises sglang or vLLM serving throughput and optimizes single kernels (Triton, HIP, CK, FlyDSL), driven by deterministic JS Workflows."
+    "keywords": "GEAK, GPU kernel optimization, serving throughput, ROCm, sglang, vLLM, Triton, HIP, CK, FlyDSL, AMD Instinct, Radeon, multi-agent, Workflow"
 ---
 
 # What is GEAK?
 
 GEAK (Generating Efficient AI-Centric Kernels) is a multi-agent GPU performance optimizer for AMD
-Instinct™ MI GPUs (CDNA; the on-box card is auto-detected). It ships two deterministic Workflows,
+Instinct™ MI GPUs and Radeon RX 9000 series GPUs (the on-box card is auto-detected). It ships two deterministic Workflows,
 driven by Claude Code:
 
 | Workflow | Scope | What it optimizes |

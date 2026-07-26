@@ -1,8 +1,8 @@
 ---
 myst:
     html_meta:
-        "description": "Verified hardware, software, runtime, and backend combinations for GEAK 4.0.0, AMD Instinct GPUs, ROCm, Claude Code, serving backends, kernel languages, and data types."
-        "keywords": "GEAK, compatibility, ROCm, AMD Instinct, MI300X, MI355X, sglang, vLLM, Triton, HIP, CK, FlyDSL, Claude Code"
+        "description": "Verified hardware, software, runtime, and backend combinations for GEAK 4.0.0, AMD GPUs (Instinct MI300X/MI355X and Radeon RX 9000 series), ROCm, Claude Code, serving backends, kernel languages, and data types."
+        "keywords": "GEAK, compatibility, ROCm, AMD Instinct, MI300X, MI355X, RX 9070 XT, RX 9070, RX 9060 XT, RX 9000 XT, RDNA4, sglang, vLLM, Triton, HIP, CK, FlyDSL, Claude Code"
 ---
 
 # GEAK compatibility matrix
@@ -12,9 +12,10 @@ JS-Workflow GPU optimizer; no pip package, no CLI). Only tested configurations a
 
 Use the following matrix to view the compatibility and system requirements:
 
-| AMD Instinct GPU | ROCm version | Python | Ubuntu |
+| AMD GPU | ROCm version | Python | OS |
 |---|---|---|---|
-| MI300X, MI325X, MI355X| 6.4x, 7.0x, 7.1x, 7.2x | 3.8, 3.12 | 22.04, 24.04 | 
+| MI300X, MI325X, MI355X | 6.4x, 7.0x, 7.1x, 7.2x | 3.8, 3.12 | Ubuntu 22.04, 24.04 |
+| RX 9070 XT, RX 9070, RX 9060 XT, RX 9000 XT | 7.3+ (Windows) | 3.8, 3.12 | Windows 11 |
 
 ```{note}
 - The on-box card is auto-detected (`rocminfo` / `rocm_agent_enumerator`); `PYTORCH_ROCM_ARCH` is pinned

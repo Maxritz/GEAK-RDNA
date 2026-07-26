@@ -9,13 +9,21 @@ sglang, and GEAK runs the full optimization loop: it finds the bottlenecks, gene
 across paths such as Triton, FlyDSL, TileLang, and HIP, and validates the speedup on the real system. What
 normally takes weeks of expert kernel engineering becomes an automated, repeatable, and self-improving process.
 
-GEAK targets AMD Instinct MI GPUs (CDNA, e.g. gfx942 / gfx950; the on-box card is auto-detected), driven by
+GEAK targets AMD Instinct MI GPUs (CDNA, e.g. gfx942 / gfx950) **and Radeon RX 9000 series (RDNA4, e.g. gfx1201)** — the on-box card is auto-detected, driven by
 Claude Code and orchestrated by deterministic JS Workflows. It ships two workflows, each for a different scenario:
 
 | Workflow | Scope | What it optimizes |
 | --- | --- | --- |
 | [e2e_workflow](e2e_workflow/) | Whole-model serving | End-to-end sglang / vLLM throughput of a full LLM |
 | [kernel_workflow](kernel_workflow/) | Single kernel | Latency / speedup of a single AMD GPU kernel (Triton, HIP, CK, FlyDSL, …) |
+
+### Supported GPUs
+
+| GPU Family | Architecture | Models | Notes |
+|------------|--------------|--------|-------|
+| Instinct MI300 | CDNA3 | MI300X, MI308X, MI325X | gfx942, ROCm native |
+| Instinct MI350 | CDNA4 | MI355X | gfx950, ROCm native |
+| Radeon RX 9000 series | RDNA4 | RX 9070 XT, RX 9070, RX 9060 XT, RX 9000 XT | gfx1201/gfx1203/gfx1206/gfx1207, WMMA FP8, Windows ROCm 7.3+ |
 
 Use e2e_workflow to raise a whole model's serving throughput: it triages hot kernels, pulls the cheapest levers
 first, and recursively calls kernel_workflow for the kernels worth fixing. Use kernel_workflow on its own to
@@ -35,7 +43,7 @@ optimize a single kernel.
 
 ### 1. Prerequisites
 
-- An **AMD Instinct MI GPU** (CDNA, e.g. gfx942 / gfx950), **ROCm 6+**, a profiler (`rocprof-compute` /
+- An **AMD Instinct MI GPU** (CDNA, e.g. gfx942 / gfx950) **or Radeon RX 9000 series GPU** (RDNA4, e.g. gfx1201), **ROCm 6+** (Windows ROCm 7.3+ for RDNA4), a profiler (`rocprof-compute` /
   `rocprofv3` / `rocprof`), Python 3.8+.
 - For E2E: a running-capable serving backend (`sglang` or `vllm`) and the model weights on disk.
 
